@@ -1,0 +1,181 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] fit
+[INFO] api
+[INFO] dao
+[INFO] common
+[INFO] web
+[INFO] service
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building fit 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.10:tree (default-cli) @ fit ---
+[INFO] com.fit.org:fit:pom:0.0.1-SNAPSHOT
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building api 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ api ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.10:tree (default-cli) @ api ---
+[INFO] com.fit.org:api:jar:0.0.1-SNAPSHOT
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building dao 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ dao ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ dao ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.10:tree (default-cli) @ dao ---
+[INFO] com.fit.org:dao:jar:0.0.1-SNAPSHOT
+[INFO] +- com.fit.org:api:jar:0.0.1-SNAPSHOT:compile
+[INFO] \- org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.0:compile
+[INFO]    +- org.springframework.boot:spring-boot-starter:jar:1.5.4.RELEASE:compile
+[INFO]    |  +- org.springframework.boot:spring-boot:jar:1.5.4.RELEASE:compile
+[INFO]    |  |  \- org.springframework:spring-context:jar:4.3.9.RELEASE:compile
+[INFO]    |  |     +- org.springframework:spring-aop:jar:4.3.9.RELEASE:compile
+[INFO]    |  |     \- org.springframework:spring-expression:jar:4.3.9.RELEASE:compile
+[INFO]    |  +- org.springframework.boot:spring-boot-autoconfigure:jar:1.5.4.RELEASE:compile
+[INFO]    |  +- org.springframework.boot:spring-boot-starter-logging:jar:1.5.4.RELEASE:compile
+[INFO]    |  |  +- ch.qos.logback:logback-classic:jar:1.1.11:compile
+[INFO]    |  |  |  +- ch.qos.logback:logback-core:jar:1.1.11:compile
+[INFO]    |  |  |  \- org.slf4j:slf4j-api:jar:1.7.25:compile
+[INFO]    |  |  +- org.slf4j:jcl-over-slf4j:jar:1.7.25:compile
+[INFO]    |  |  +- org.slf4j:jul-to-slf4j:jar:1.7.25:compile
+[INFO]    |  |  \- org.slf4j:log4j-over-slf4j:jar:1.7.25:compile
+[INFO]    |  +- org.springframework:spring-core:jar:4.3.9.RELEASE:compile
+[INFO]    |  \- org.yaml:snakeyaml:jar:1.17:runtime
+[INFO]    +- org.springframework.boot:spring-boot-starter-jdbc:jar:1.5.4.RELEASE:compile
+[INFO]    |  +- org.apache.tomcat:tomcat-jdbc:jar:8.5.15:compile
+[INFO]    |  |  \- org.apache.tomcat:tomcat-juli:jar:8.5.15:compile
+[INFO]    |  \- org.springframework:spring-jdbc:jar:4.3.9.RELEASE:compile
+[INFO]    |     +- org.springframework:spring-beans:jar:4.3.9.RELEASE:compile
+[INFO]    |     \- org.springframework:spring-tx:jar:4.3.9.RELEASE:compile
+[INFO]    +- org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:jar:1.3.0:compile
+[INFO]    +- org.mybatis:mybatis:jar:3.4.4:compile
+[INFO]    \- org.mybatis:mybatis-spring:jar:1.3.1:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building common 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ common ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.10:tree (default-cli) @ common ---
+[INFO] com.fit.org:common:jar:0.0.1-SNAPSHOT
+[INFO] \- com.alibaba:fastjson:jar:1.2.46:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building web 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ web ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ web ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.10:tree (default-cli) @ web ---
+[INFO] com.fit.org:web:war:0.0.1-SNAPSHOT
+[INFO] +- com.fit.org:dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.fit.org:api:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- com.fit.org:common:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.alibaba:fastjson:jar:1.2.46:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:1.5.4.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:1.5.4.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot:jar:1.5.4.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:1.5.4.RELEASE:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.1.11:compile
+[INFO] |  |  |  |  +- ch.qos.logback:logback-core:jar:1.1.11:compile
+[INFO] |  |  |  |  \- org.slf4j:slf4j-api:jar:1.7.25:compile
+[INFO] |  |  |  +- org.slf4j:jcl-over-slf4j:jar:1.7.25:compile
+[INFO] |  |  |  +- org.slf4j:jul-to-slf4j:jar:1.7.25:compile
+[INFO] |  |  |  \- org.slf4j:log4j-over-slf4j:jar:1.7.25:compile
+[INFO] |  |  +- org.springframework:spring-core:jar:4.3.9.RELEASE:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:1.17:runtime
+[INFO] |  +- org.hibernate:hibernate-validator:jar:5.3.5.Final:compile
+[INFO] |  |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  |  +- org.jboss.logging:jboss-logging:jar:3.3.1.Final:compile
+[INFO] |  |  \- com.fasterxml:classmate:jar:1.3.3:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.8:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.0:compile
+[INFO] |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.8.8:compile
+[INFO] |  +- org.springframework:spring-web:jar:4.3.9.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-aop:jar:4.3.9.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:4.3.9.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-context:jar:4.3.9.RELEASE:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:4.3.9.RELEASE:compile
+[INFO] |     \- org.springframework:spring-expression:jar:4.3.9.RELEASE:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-tomcat:jar:1.5.4.RELEASE:provided
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.0:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-jdbc:jar:1.5.4.RELEASE:compile
+[INFO] |  |  +- org.apache.tomcat:tomcat-jdbc:jar:8.5.15:compile
+[INFO] |  |  |  \- org.apache.tomcat:tomcat-juli:jar:8.5.15:compile
+[INFO] |  |  \- org.springframework:spring-jdbc:jar:4.3.9.RELEASE:compile
+[INFO] |  |     \- org.springframework:spring-tx:jar:4.3.9.RELEASE:compile
+[INFO] |  +- org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:jar:1.3.0:compile
+[INFO] |  +- org.mybatis:mybatis:jar:3.4.4:compile
+[INFO] |  \- org.mybatis:mybatis-spring:jar:1.3.1:compile
+[INFO] +- com.alibaba:druid-spring-boot-starter:jar:1.1.0:compile
+[INFO] |  +- com.alibaba:druid:jar:1.1.0:compile
+[INFO] |  |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  \- org.springframework.boot:spring-boot-autoconfigure:jar:1.5.4.RELEASE:compile
+[INFO] \- mysql:mysql-connector-java:jar:5.1.40:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building service 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.10:tree (default-cli) @ service ---
+[INFO] com.fit.org:service:jar:0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] fit ................................................ SUCCESS [  1.559 s]
+[INFO] api ................................................ SUCCESS [  0.463 s]
+[INFO] dao ................................................ SUCCESS [  0.262 s]
+[INFO] common ............................................. SUCCESS [  0.028 s]
+[INFO] web ................................................ SUCCESS [  0.397 s]
+[INFO] service ............................................ SUCCESS [  0.019 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.035 s
+[INFO] Finished at: 2018-03-04T21:30:33+08:00
+[INFO] Final Memory: 30M/337M
+[INFO] ------------------------------------------------------------------------
