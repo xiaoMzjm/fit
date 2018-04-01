@@ -17,6 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,6 +31,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ResponseBody
 @RequestMapping("/test")
 public class TestController {
+
+    @Autowired
+    private TransactionTemplate transactionTemplate;
 
     @Autowired
     private UserMapper userMapper;
@@ -55,42 +61,19 @@ public class TestController {
         return JSON.toJSONString(result);
     }
 
-    @RequestMapping("/mysqlHello2")
-    protected void doGet()
-        throws ServletException, IOException {
-        Connection connection = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        String sql = null;
+    /**
+     * http://localhost:8088/test/transaction
+     * @return
+     */
+    @RequestMapping("/transaction")
+    public String transaction(){
+        String result = transactionTemplate.execute(new TransactionCallback<String>() {
 
-        try {
-            /*****填写数据库相关信息(请查找数据库详情页)*****/
-            String databaseName = "UWrmSuNCUzQExufPUpkA";
-            String host = "sqld.duapp.com";
-            String port = "4050";
-            String username = "ae5f7053ab1842e19e46f1657694c420";
-            String password = "3b437259315243beb1540d963dd8b2f0";
-            String driverName = "com.mysql.jdbc.Driver";
-            String dbUrl = "jdbc:mysql://";
-            String serverName = host + ":" + port + "/";
-            String connName = dbUrl + serverName + databaseName;
-
-            /******接着连接并选择数据库名为databaseName的服务器******/
-            Class.forName(driverName);
-            connection = DriverManager.getConnection(connName, username,
-                password);
-            stmt = connection.createStatement();
-            /******至此连接已完全建立，就可对当前数据库进行相应的操作了*****/
-            /******接下来就可以使用其它标准mysql函数操作进行数据库操作*****/
-            //创建一个数据库表
-            sql = "select * from user limit 2";
-            stmt.execute(sql);
-            ResultSet resultSet = stmt.getResultSet();
-            String name = resultSet.getString("name");
-            System.out.println("==============resultSet" + name);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            @Override
+            public String doInTransaction(TransactionStatus status) {
+                return "success";
+            }
+        });
+        return result;
     }
-
 }
