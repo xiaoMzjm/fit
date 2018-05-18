@@ -32,7 +32,7 @@ public class TestController {
     @Autowired
     private UserMapper userMapper;
 
-    //@Autowired
+    @Autowired
     private RedisDistributionLockImpl redisDistributionLock;
 
     private final static Logger logger = LoggerFactory.getLogger(TestController.class);

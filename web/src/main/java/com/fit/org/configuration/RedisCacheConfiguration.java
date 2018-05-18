@@ -43,7 +43,7 @@ public class RedisCacheConfiguration {
     @Value("${spring.datasource.redis.username}")
     private String username;
 
-    //@Bean
+    @Bean
     public JedisPool jedisPool() {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxIdle(maxIdle);
@@ -52,16 +52,18 @@ public class RedisCacheConfiguration {
             password = null;
         }
         JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password);
-        //jedisPool.getResource();
+        jedisPool.getResource();
         logger.info(FitContext.LAUNCH_LOG_PREFIX + String.format("jedisPool start success , host=%s , port=%s , username=%s , password=%s" , host , port , username , password));
         return jedisPool;
     }
 
-    //@Bean
+    @Bean
     public Jedis jedis(){
         Jedis jedis = new Jedis(host, port);
-        jedis.auth(password);
-        //jedis.get("test");
+        if(!StringUtils.isEmpty(password)) {
+            jedis.auth(password);
+        }
+        jedis.get("test");
         logger.info(FitContext.LAUNCH_LOG_PREFIX + String.format("jedis start success , host=%s , port=%s , username=%s , password=%s" , host , port , username , password));
         return jedis;
     }

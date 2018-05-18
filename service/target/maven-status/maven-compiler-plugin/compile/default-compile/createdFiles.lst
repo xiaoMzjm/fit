@@ -1,4 +1,0 @@
-com\fit\org\service\manager\DistributionLock.class
-com\fit\org\service\manager\WxManager.class
-com\fit\org\service\manager\impl\RedisDistributionLockImpl.class
-com\fit\org\service\manager\impl\WxManagerImpl.class

@@ -1,20 +1,11 @@
 package com.fit.org.service.manager.impl;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.fit.org.service.manager.DistributionLock;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -38,8 +29,6 @@ public class RedisDistributionLockImpl implements DistributionLock {
 
     @Resource
     private JedisPool jedisPool;
-
-    private final static JdkSerializationRedisSerializer jdkSerializer = new JdkSerializationRedisSerializer();
 
     @Override
     public String lock(String lockKey) throws Exception{
