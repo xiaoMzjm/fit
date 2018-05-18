@@ -11,6 +11,6 @@ public class MyApplicationListener implements ApplicationListener<ApplicationEve
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
 
-        System.out.println("==================="+event.getClass().getName());
+        //System.out.println("==================="+event.getClass().getName());
     }
 }

@@ -23,3 +23,15 @@ spring:
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
+    redis:
+      database: 0
+      host: redis.duapp.com
+      port: 80
+      username: xMZendzjsrMfwNfidBph
+      password: ae5f7053ab1842e19e46f1657694c420
+      timeout: 0
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0

@@ -23,6 +23,10 @@
             <groupId>com.fit.org</groupId>
             <artifactId>common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.fit.org</groupId>
+            <artifactId>service</artifactId>
+        </dependency>
         <!-- spring-boot-starter-web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -41,7 +45,6 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- ================================================= -->
         <!-- 以下为srpingboot整合mybatis所需要的三个依赖       -->
         <!-- ================================================= -->
@@ -89,6 +92,8 @@
         <!-- ================================================= -->
         <!-- 以上为打包上传百度bae需要特殊处理的                -->
         <!-- ================================================= -->
+
+
     </dependencies>
 
     <build>

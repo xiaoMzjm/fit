@@ -72,6 +72,12 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            <!-- spring-boot-starter-data-redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${srpingboot.version}</version>
+            </dependency>
             <!-- spring-boot-starter-test -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -114,6 +120,37 @@
                 <artifactId>fastjson</artifactId>
                 <version>1.2.46</version>
             </dependency>
+            <!-- http -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>fluent-hc</artifactId>
+                <version>4.5.3</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.7</version>
+            </dependency>
+            <!-- 解密 -->
+            <dependency>
+                <groupId>org.codehaus.xfire</groupId>
+                <artifactId>xfire-core</artifactId>
+                <version>1.2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk16</artifactId>
+                <version>1.46</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/net.iharder/base64 -->
+            <dependency>
+                <groupId>net.iharder</groupId>
+                <artifactId>base64</artifactId>
+                <version>2.3.8</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 

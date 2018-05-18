@@ -1,18 +1,12 @@
 package com.fit.org.web.controller.test;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.List;
-
-import javax.servlet.ServletException;
 
 import com.alibaba.fastjson.JSON;
 
 import com.fit.org.api.model.User;
 import com.fit.org.dao.mapper.UserMapper;
+import com.fit.org.service.manager.impl.RedisDistributionLockImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +32,14 @@ public class TestController {
     @Autowired
     private UserMapper userMapper;
 
+    //@Autowired
+    private RedisDistributionLockImpl redisDistributionLock;
+
     private final static Logger logger = LoggerFactory.getLogger(TestController.class);
 
     /**
      * http://localhost:8088/test/hello
+     * https://keephealthy.duapp.com/test/hello
      * @return
      */
     @RequestMapping("/hello")
@@ -53,6 +51,7 @@ public class TestController {
 
     /**
      * http://localhost:8088/test/mysqlHello
+     * https://keephealthy.duapp.com/test/mysqlHello
      * @return
      */
     @RequestMapping("/mysqlHello")
@@ -60,6 +59,32 @@ public class TestController {
         List<User> result = userMapper.selectAll();
         return JSON.toJSONString(result);
     }
+
+    /**
+     * http://localhost:8088/test/redisLock
+     * https://keephealthy.duapp.com/test/redisLock
+     * @return
+     */
+    @RequestMapping("/redisLock")
+    public String redisLock() throws Exception{
+        String value = redisDistributionLock.lock("haha");
+        Thread.sleep(10000);
+        redisDistributionLock.unlock("haha" , value);
+        return "success";
+    }
+
+    /**
+     * http://localhost:8088/test/redisLockLimitTime?limitTime=2000
+     * https://keephealthy.duapp.com/test/redisLockLimitTime?limitTime=2000
+     * @return
+     */
+    @RequestMapping("/redisLockLimitTime")
+    public String redisLockLimitTime(Long limitTime) throws Exception{
+        String value = redisDistributionLock.lockLimitTime("haha" , limitTime);
+        redisDistributionLock.unlock("haha" , value);
+        return "success";
+    }
+
 
     /**
      * http://localhost:8088/test/transaction
@@ -71,9 +96,44 @@ public class TestController {
 
             @Override
             public String doInTransaction(TransactionStatus status) {
+                if(true) {
+                    throw new RuntimeException("haha");
+                }
                 return "success";
             }
         });
         return result;
+    }
+
+    /**
+     * 嵌套一个子事物，子事物抛异常。
+     * http://localhost:8088/test/transactionqiantao
+     * @return
+     */
+    @RequestMapping("/transactionqiantao")
+    public String transactionqiantao(){
+        String result = transactionTemplate.execute(new TransactionCallback<String>() {
+
+            @Override
+            public String doInTransaction(TransactionStatus status) {
+                // 子事物
+                innerTransaction();
+                return "success";
+            }
+        });
+        return result;
+    }
+
+    public void innerTransaction(){
+        String result = transactionTemplate.execute(new TransactionCallback<String>() {
+
+            @Override
+            public String doInTransaction(TransactionStatus status) {
+                if(true) {
+                    throw new RuntimeException("haha");
+                }
+                return "success";
+            }
+        });
     }
 }
