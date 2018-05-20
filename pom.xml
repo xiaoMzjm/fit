@@ -106,12 +106,14 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
-                <version>1.1.0</version>
+                <version>1.1.9</version>
             </dependency>
             <!--mysql数据库驱动-->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
+                <!-- 本地跑使用8的版本，bae跑使用5的版本-->
+                <!--<version>8.0.11</version>-->
                 <version>5.1.18</version>
             </dependency>
             <!-- fastjson -->
@@ -131,6 +133,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>3.7</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.3</version>
             </dependency>
             <!-- 解密 -->
             <dependency>
@@ -154,6 +162,12 @@
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
                 <version>2.9.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>25.0-jre</version>
             </dependency>
 
 

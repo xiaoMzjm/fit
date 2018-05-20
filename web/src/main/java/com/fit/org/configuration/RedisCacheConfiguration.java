@@ -1,6 +1,6 @@
 package com.fit.org.configuration;
 
-import com.fir.org.common.FitContext;
+import com.fir.org.common.context.FitContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -52,7 +52,7 @@ public class RedisCacheConfiguration {
             password = null;
         }
         JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password);
-        jedisPool.getResource();
+        //jedisPool.getResource();
         logger.info(FitContext.LAUNCH_LOG_PREFIX + String.format("jedisPool start success , host=%s , port=%s , username=%s , password=%s" , host , port , username , password));
         return jedisPool;
     }
@@ -60,10 +60,11 @@ public class RedisCacheConfiguration {
     @Bean
     public Jedis jedis(){
         Jedis jedis = new Jedis(host, port);
+        jedis.connect();
         if(!StringUtils.isEmpty(password)) {
             jedis.auth(password);
         }
-        jedis.get("test");
+        //jedis.get("test");
         logger.info(FitContext.LAUNCH_LOG_PREFIX + String.format("jedis start success , host=%s , port=%s , username=%s , password=%s" , host , port , username , password));
         return jedis;
     }

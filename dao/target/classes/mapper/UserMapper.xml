@@ -2,8 +2,65 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.fit.org.dao.mapper.UserMapper" >
 
-    <select id="selectAll" resultType="com.fit.org.api.model.User">
-        select id,name from user limit 30
+    <!-- 查询动态sql-->
+    <sql id="SELECT_CONDITION">
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="code != null">
+                and code = #{code}
+            </if>
+            <if test="openId != null">
+                and open_id = #{openId}
+            </if>
+        </trim>
+    </sql>
+    <sql id="ORDER_BY">
+        order by gmt_create desc
+    </sql>
+    <sql id="LIMIT">
+        <if test="pageIndex != null">
+            <if test="pageSize != null">
+                limit #{pageIndex},#{pageSize}
+            </if>
+        </if>
+    </sql>
+
+    <!-- update动态sql-->
+    <sql id="UPDATE_FIELD">
+        <trim prefix="set" suffixOverrides=",">
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="weight != null">
+                weight = #{weight},
+            </if>
+            <if test="height != null">
+                height = #{height},
+            </if>
+            gmt_modified = NOW()
+        </trim>
+    </sql>
+
+    <!-- 插入一行记录 -->
+    <insert id="insert" parameterType="com.fit.org.dao.model.UserDO">
+        insert into user (name,country,province,open_id,code,gmt_create,gmt_modified)
+        SELECT #{name},#{country},#{province},#{openId},#{code},#{gmtCreate},#{gmtModified}
+        FROM DUAL WHERE NOT EXISTS (SELECT open_id FROM  user WHERE open_id = #{openId})
+    </insert>
+
+    <!-- 搜索 -->
+    <select id="select" parameterType="java.util.Map" resultType="com.fit.org.dao.model.UserDO">
+        select name,country,province,open_id as openId,code,gmt_create as gmtCreate,gmt_modified as gmtModified,sex,weight,height
+        from user
+        <include refid="SELECT_CONDITION"></include>
+        <include refid="ORDER_BY"></include>
+        <include refid="LIMIT"></include>
     </select>
+
+    <!-- 修改 -->
+    <update id="update" parameterType="java.util.Map">
+        update user
+        <include refid="UPDATE_FIELD"></include>
+        where code = #{code}
+    </update>
 
 </mapper>

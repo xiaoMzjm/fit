@@ -1,0 +1,9 @@
+com/fit/org/api/model/UserQuery.class
+com/fit/org/api/model/WxUserInfoDTO.class
+com/fit/org/api/model/Result.class
+com/fit/org/api/model/BaseQuery.class
+com/fit/org/api/model/WxLoginResultDTO.class
+com/fit/org/api/model/UserDTO.class
+com/fit/org/api/model/RequirementDTO.class
+com/fit/org/api/enums/RequirementTypeEnum.class
+com/fit/org/api/model/RequirementQuery.class

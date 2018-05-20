@@ -3,8 +3,8 @@ spring:
   datasource:
     name: spring_boot_mybatis
     url: jdbc:mysql://localhost:3306/fit
-    username: root
-    password:
+    username: test
+    password: test
     type: com.alibaba.druid.pool.DruidDataSource # 使用druid 数据源
     driver-class-name: com.mysql.jdbc.Driver
     dbcp2:

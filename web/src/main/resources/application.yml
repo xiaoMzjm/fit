@@ -2,7 +2,7 @@ server:
   port: 8088
 
 mybatis:
-  mapper-locations: classpath:mapper/UserMapper.xml
+  mapper-locations: classpath:mapper/*.xml
   type-aliases-package:
 
 spring:
@@ -19,7 +19,7 @@ spring:
       initial-size: 1
       time-between-eviction-runs-millis: 3000
       min-evictable-idle-time-millis: 300000
-      validation-query: SELECT id FROM user limit 1
+      validation-query: SELECT 1
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
@@ -27,8 +27,8 @@ spring:
       database: 0
       host: redis.duapp.com
       port: 80
-      username: xMZendzjsrMfwNfidBph
-      password: ae5f7053ab1842e19e46f1657694c420
+      username: ae5f7053ab1842e19e46f1657694c420
+      password: ae5f7053ab1842e19e46f1657694c420-3b437259315243beb1540d963dd8b2f0-xMZendzjsrMfwNfidBph
       timeout: 0
       pool:
         max-active: 8

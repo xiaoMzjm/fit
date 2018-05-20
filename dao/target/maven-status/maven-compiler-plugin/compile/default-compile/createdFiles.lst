@@ -1,0 +1,6 @@
+com/fit/org/dao/mapper/RequirementMapper.class
+com/fit/org/dao/model/PlanDO.class
+com/fit/org/dao/model/RequirementDO.class
+com/fit/org/dao/model/UserDO.class
+com/fit/org/dao/mapper/UserMapper.class
+com/fit/org/dao/mapper/PlanMapper.class

@@ -11,7 +11,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import com.alibaba.fastjson.JSON;
 
-import com.fir.org.common.FitContext;
+import com.fir.org.common.context.FitContext;
 import com.fit.org.api.model.WxLoginResultDTO;
 import com.fit.org.api.model.WxUserInfoDTO;
 import com.fit.org.service.manager.WxManager;
@@ -36,7 +36,7 @@ public class WxManagerImpl implements WxManager {
     @Override
     public WxLoginResultDTO getSessionKeyOropenid(String code) throws Exception{
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code";
-        String postResult = Request
+        Request request = Request
             .Post(url)
             .bodyForm(
                 Form.form().add("appid", FitContext.WEIXIN_APP_ID).
@@ -45,10 +45,23 @@ public class WxManagerImpl implements WxManager {
                     add("grant_type", FitContext.WEXIN_AUTHORIZATION_CODE).
                     build() ,
                 Charset.forName("UTF-8")
-            )
-            .execute()
-            .returnContent()
-            .asString();
+            );
+        String postResult = null;
+        for(int i = 0 ; i < 2 ; i++) {
+            try {
+                postResult = request
+                    .execute()
+                    .returnContent()
+                    .asString();
+                break;
+            }catch (Exception e) {
+                logger.error("请求微信登陆失败，" + e.getMessage() , e);
+                if(i == 1) {
+                    throw new RuntimeException("请求微信登陆失败，" + e.getMessage());
+                }
+            }
+        }
+
         String strResult = new String(postResult);
         System.out.println(strResult);
         WxLoginResultDTO wxLoginResultDTO = JSON.parseObject(strResult , WxLoginResultDTO.class);

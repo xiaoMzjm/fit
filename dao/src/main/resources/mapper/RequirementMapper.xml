@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fit.org.dao.mapper.RequirementMapper" >
+
+    <!-- 查询动态sql-->
+    <sql id="SELECT_CONDITION">
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="userCode != null">
+                and user_code = #{userCode}
+            </if>
+        </trim>
+    </sql>
+    <sql id="ORDER_BY">
+        order by gmt_create desc
+    </sql>
+    <sql id="LIMIT">
+        <if test="pageIndex != null">
+            <if test="pageSize != null">
+                limit #{pageIndex},#{pageSize}
+            </if>
+        </if>
+    </sql>
+
+    <!-- update动态sql-->
+    <sql id="UPDATE_FIELD">
+        <trim prefix="set" suffixOverrides=",">
+            <if test="requirementType != null">
+                requirement_type = #{requirementType},
+            </if>
+            <if test="difficulty != null">
+                difficulty = #{difficulty},
+            </if>
+            gmt_modified = NOW()
+        </trim>
+    </sql>
+
+    <!-- 插入一行记录 -->
+    <insert id="insert" parameterType="com.fit.org.dao.model.RequirementDO">
+        insert into requirement (user_code,requirement_type,difficulty,gmt_modified,gmt_create)
+        SELECT #{userCode},#{requirementType},#{difficulty},#{gmtModified},#{gmtCreate}
+        FROM DUAL WHERE NOT EXISTS (SELECT user_code FROM  requirement WHERE user_code = #{userCode})
+    </insert>
+
+    <!-- 搜索 -->
+    <select id="select" parameterType="java.util.Map" resultType="com.fit.org.dao.model.RequirementDO">
+        select user_code as userCode , requirement_type as requirementType , difficulty ,gmt_modified as gmtModified , gmt_create as gmtCreate
+        from requirement
+        <include refid="SELECT_CONDITION"></include>
+        <include refid="ORDER_BY"></include>
+        <include refid="LIMIT"></include>
+    </select>
+
+    <!-- 修改 -->
+    <update id="update" parameterType="java.util.Map">
+        update requirement
+        <include refid="UPDATE_FIELD"></include>
+        where user_code = #{userCode}
+    </update>
+
+</mapper>

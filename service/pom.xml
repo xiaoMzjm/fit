@@ -22,6 +22,11 @@
             <groupId>com.fit.org</groupId>
             <artifactId>api</artifactId>
         </dependency>
+        <!-- fit-api  -->
+        <dependency>
+            <groupId>com.fit.org</groupId>
+            <artifactId>dao</artifactId>
+        </dependency>
         <!-- http -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

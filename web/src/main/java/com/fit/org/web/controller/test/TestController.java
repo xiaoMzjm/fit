@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 
-import com.fit.org.api.model.User;
+import com.fit.org.dao.model.UserDO;
 import com.fit.org.dao.mapper.UserMapper;
 import com.fit.org.service.manager.impl.RedisDistributionLockImpl;
 import org.slf4j.Logger;
@@ -47,17 +47,6 @@ public class TestController {
         logger.info("~~~~~hello");
         System.out.println("~~~~~~system~~~~~hello");
         return "hello world";
-    }
-
-    /**
-     * http://localhost:8088/test/mysqlHello
-     * https://keephealthy.duapp.com/test/mysqlHello
-     * @return
-     */
-    @RequestMapping("/mysqlHello")
-    public String mysqlHello(){
-        List<User> result = userMapper.selectAll();
-        return JSON.toJSONString(result);
     }
 
     /**

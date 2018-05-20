@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    name: spring_boot_mybatis
+    url: jdbc:mysql://sqld.duapp.com:4050/UWrmSuNCUzQExufPUpkA
+    username: ae5f7053ab1842e19e46f1657694c420
+    password: 3b437259315243beb1540d963dd8b2f0
+    type: com.alibaba.druid.pool.DruidDataSource # 使用druid 数据源
+    driver-class-name: com.mysql.jdbc.Driver
+    dbcp2:
+      min-idle: 1
+      max-idle: 2
+      initial-size: 1
+      time-between-eviction-runs-millis: 3000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT id FROM user limit 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+    redis:
+      database: 0
+      host: 127.0.0.1
+      port: 6379
+      password:
+      timeout: 0
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0

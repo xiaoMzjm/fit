@@ -25,6 +25,11 @@ public class WxUserInfoDTO {
 
     private String avatarUrl;
 
+    private String userCode;
+
+    private Integer courseNum;
+
+
     @Override
     public String toString() {
         return ReflectionToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
@@ -93,4 +98,23 @@ public class WxUserInfoDTO {
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
+
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
+    }
+
+    public Integer getCourseNum() {
+        return courseNum;
+    }
+
+    public void setCourseNum(Integer courseNum) {
+        this.courseNum = courseNum;
+    }
+
+
+
 }
