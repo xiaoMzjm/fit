@@ -2,8 +2,7 @@ package com.fit.org.service.manager;
 
 import java.util.List;
 
-import com.fit.org.api.model.UserDTO;
-import com.fit.org.api.model.UserQuery;
+import com.fit.org.api.model.query.UserQuery;
 import com.fit.org.dao.model.UserDO;
 
 /**

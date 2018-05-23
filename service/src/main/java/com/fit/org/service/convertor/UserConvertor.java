@@ -1,7 +1,7 @@
 package com.fit.org.service.convertor;
 
 import java.util.*;
-import com.fit.org.api.model.UserDTO;
+import com.fit.org.api.model.dto.UserDTO;
 import com.fit.org.dao.model.UserDO;
 import com.google.common.collect.Lists;
 import org.springframework.beans.BeanUtils;

@@ -1,12 +1,7 @@
 package com.fit.org.web.controller.test;
 
-import java.util.List;
-
-import com.alibaba.fastjson.JSON;
-
-import com.fit.org.dao.model.UserDO;
 import com.fit.org.dao.mapper.UserMapper;
-import com.fit.org.service.manager.impl.RedisDistributionLockImpl;
+import com.fit.org.service.wapper.impl.RedisDistributionLockWapperImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +28,7 @@ public class TestController {
     private UserMapper userMapper;
 
     @Autowired
-    private RedisDistributionLockImpl redisDistributionLock;
+    private RedisDistributionLockWapperImpl redisDistributionLock;
 
     private final static Logger logger = LoggerFactory.getLogger(TestController.class);
 

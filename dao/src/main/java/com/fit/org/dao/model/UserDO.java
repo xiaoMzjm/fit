@@ -51,12 +51,12 @@ public class UserDO {
     /**
      * 体重，单位千克
      */
-    private Integer weight;
+    private Float weight;
 
     /**
      * 身高，单位厘米
      */
-    private Integer height;
+    private Float height;
 
     public String getName() {
         return name;
@@ -122,19 +122,19 @@ public class UserDO {
         this.sex = sex;
     }
 
-    public Integer getWeight() {
+    public Float getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(Float weight) {
         this.weight = weight;
     }
 
-    public Integer getHeight() {
+    public Float getHeight() {
         return height;
     }
 
-    public void setHeight(Integer height) {
+    public void setHeight(Float height) {
         this.height = height;
     }
 }

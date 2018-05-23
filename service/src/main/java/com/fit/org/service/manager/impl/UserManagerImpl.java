@@ -1,5 +1,6 @@
 package com.fit.org.service.manager.impl;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +8,7 @@ import java.util.Map;
 import com.fir.org.common.exception.CustomerException;
 import com.fir.org.common.util.QueryUtil;
 import com.fir.org.common.util.UUIDUtil;
-import com.fit.org.api.model.UserQuery;
+import com.fit.org.api.model.query.UserQuery;
 import com.fit.org.dao.mapper.UserMapper;
 import com.fit.org.dao.model.UserDO;
 import com.fit.org.service.manager.UserManager;
@@ -85,6 +86,16 @@ public class UserManagerImpl implements UserManager {
         if(userDO.getHeight() > 300) {
             throw new CustomerException("有点皮,身高不能大于300cm喔");
         }
+        // 保留小数点后1位数
+        int   scale  =   1;
+        int   roundingMode  =  4;
+        BigDecimal weight  =   new  BigDecimal(userDO.getWeight());
+        weight   =  weight.setScale(scale,roundingMode);
+        userDO.setWeight(weight.floatValue());
+        BigDecimal height  =   new  BigDecimal(userDO.getHeight());
+        height   =  height.setScale(scale,roundingMode);
+        userDO.setHeight(height.floatValue());
+
         Map<String,Object> params = QueryUtil.transBean2Map(userDO);
         Long result = userMapper.update(params);
         return result;

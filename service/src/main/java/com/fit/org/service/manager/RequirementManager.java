@@ -2,10 +2,9 @@ package com.fit.org.service.manager;
 
 import java.util.List;
 
-import com.fit.org.api.model.RequirementQuery;
-import com.fit.org.api.model.UserQuery;
+import com.fit.org.api.model.dto.RequirementDTO;
+import com.fit.org.api.model.query.RequirementQuery;
 import com.fit.org.dao.model.RequirementDO;
-import com.fit.org.dao.model.UserDO;
 
 /**
  * @author:黑绝
@@ -18,4 +17,6 @@ public interface RequirementManager {
     List<RequirementDO> select(RequirementQuery requirementQuery) throws Exception;
 
     Long update(RequirementDO requirementDO) throws Exception;
+
+    Float calTargetNum(RequirementDTO requirementDTO) throws Exception;
 }

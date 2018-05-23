@@ -3,7 +3,7 @@ package com.fit.org.web.controller.plan;
 import com.alibaba.fastjson.JSON;
 
 import com.fit.org.api.model.Result;
-import com.fit.org.service.PlanService;
+import com.fit.org.service.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -72,21 +72,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <!-- 本地跑把下面注释，打war把下面打开 -->
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.tomcat.embed</groupId>
-                    <artifactId>tomcat-embed-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.tomcat.embed</groupId>
-                    <artifactId>tomcat-embed-el</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.tomcat.embed</groupId>
-                    <artifactId>tomcat-embed-websocket</artifactId>
-                </exclusion>
-            </exclusions>
+            <!--<scope>provided</scope>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.apache.tomcat.embed</groupId>-->
+                    <!--<artifactId>tomcat-embed-core</artifactId>-->
+                <!--</exclusion>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.apache.tomcat.embed</groupId>-->
+                    <!--<artifactId>tomcat-embed-el</artifactId>-->
+                <!--</exclusion>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.apache.tomcat.embed</groupId>-->
+                    <!--<artifactId>tomcat-embed-websocket</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
             <!-- 本地跑把上面注释，打war把上面打开 -->
         </dependency>
         <!-- ================================================= -->
